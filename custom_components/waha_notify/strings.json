@@ -1,0 +1,20 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "WAHA Notify",
+                "description": "Masukkan URL API dan credential Cloudflare Access.",
+                "data": {
+                    "base_url": "Base URL",
+                    "cf_access_client_id": "CF key",
+                    "cf_access_client_secret": "CF secret"
+                }
+            }
+        },
+        "error": {
+            "auth": "Authentication failed",
+            "cannot_connect": "Cannot connect",
+            "unknown": "Unknown error"
+        }
+    }
+}

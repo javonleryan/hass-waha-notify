@@ -1,0 +1,70 @@
+send_personal:
+  name: Send Personal Message
+  description: Kirim pesan WhatsApp ke nomor personal.
+  fields:
+    sender:
+      name: Sender
+      description: Nomor pengirim untuk resolve session WAHA.
+      required: true
+      example: "6281234567890"
+      selector:
+        text:
+    phone:
+      name: Phone
+      description: Nomor tujuan.
+      required: true
+      example: "6289876543210"
+      selector:
+        text:
+    message:
+      name: Message
+      description: Isi pesan.
+      required: true
+      example: "Pintu depan terbuka!"
+      selector:
+        text:
+
+send_group:
+  name: Send Group Message
+  description: Kirim pesan WhatsApp ke grup.
+  fields:
+    sender:
+      name: Sender
+      description: Nomor pengirim untuk resolve session WAHA.
+      required: true
+      example: "6281234567890"
+      selector:
+        text:
+    group_id:
+      name: Group ID
+      description: ID grup tujuan.
+      required: true
+      example: "1203630xxxxxxxx"
+      selector:
+        text:
+    message:
+      name: Message
+      description: Isi pesan.
+      required: true
+      example: "Backup server selesai."
+      selector:
+        text:
+
+check_phone:
+  name: Check Phone
+  description: Cek apakah nomor tersedia di WhatsApp menggunakan session sender.
+  fields:
+    sender:
+      name: Sender
+      description: Nomor pengirim untuk resolve session WAHA.
+      required: true
+      example: "6281234567890"
+      selector:
+        text:
+    phone:
+      name: Phone
+      description: Nomor yang ingin dicek.
+      required: true
+      example: "6289876543210"
+      selector:
+        text:
