@@ -65,7 +65,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             await client.send_personal(
                 phone=call.data[ATTR_PHONE],
                 message=call.data[ATTR_MESSAGE],
-                sender=call.data[ATTR_SENDER],
+                session_name=call.data[ATTR_SENDER],
             )
         except Exception as err:
             raise HomeAssistantError(f"Failed to send personal message: {err}") from err
@@ -76,7 +76,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             await client.send_group(
                 group_id=call.data[ATTR_GROUP_ID],
                 message=call.data[ATTR_MESSAGE],
-                sender=call.data[ATTR_SENDER],
+                session_name=call.data[ATTR_SENDER],
             )
         except Exception as err:
             raise HomeAssistantError(f"Failed to send group message: {err}") from err
@@ -86,7 +86,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         try:
             result = await client.check_phone(
                 phone=call.data[ATTR_PHONE],
-                sender=call.data[ATTR_SENDER],
+                session_name=call.data[ATTR_SENDER],
             )
             _LOGGER.info("WAHA check_phone result: %s", result)
         except Exception as err:

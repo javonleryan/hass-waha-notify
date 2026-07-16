@@ -1,10 +1,7 @@
-import aiohttp
 import voluptuous as vol
 
 from homeassistant import config_entries
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .api import WahaApiClient
 from .const import (
     DOMAIN,
     CONF_BASE_URL,
@@ -20,27 +17,13 @@ class WahaNotifyConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         errors = {}
 
         if user_input is not None:
-            session = async_get_clientsession(self.hass)
-            client = WahaApiClient(
-                base_url=user_input[CONF_BASE_URL],
-                cf_access_client_id=user_input[CONF_CF_ACCESS_CLIENT_ID],
-                cf_access_client_secret=user_input[CONF_CF_ACCESS_CLIENT_SECRET],
-                session=session,
-            )
+            await self.async_set_unique_id(user_input[CONF_BASE_URL].lower())
+            self._abort_if_unique_id_configured()
 
-            try:
-                await self.async_set_unique_id(user_input[CONF_BASE_URL].lower())
-                self._abort_if_unique_id_configured()
-                return self.async_create_entry(
-                    title=f"WAHA Notify ({user_input[CONF_BASE_URL]})",
-                    data=user_input,
-                )
-            except aiohttp.ClientResponseError:
-                errors["base"] = "auth"
-            except aiohttp.ClientError:
-                errors["base"] = "cannot_connect"
-            except Exception:
-                errors["base"] = "unknown"
+            return self.async_create_entry(
+                title=f"WAHA Notify ({user_input[CONF_BASE_URL]})",
+                data=user_input,
+            )
 
         data_schema = vol.Schema(
             {

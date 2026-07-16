@@ -3,10 +3,10 @@ send_personal:
   description: Kirim pesan WhatsApp ke nomor personal.
   fields:
     sender:
-      name: Sender
-      description: Nomor pengirim untuk resolve session WAHA.
+      name: Session Name
+      description: Session name WAHA yang akan digunakan.
       required: true
-      example: "6281234567890"
+      example: "device_1"
       selector:
         text:
     phone:
@@ -29,10 +29,10 @@ send_group:
   description: Kirim pesan WhatsApp ke grup.
   fields:
     sender:
-      name: Sender
-      description: Nomor pengirim untuk resolve session WAHA.
+      name: Session Name
+      description: Session name WAHA yang akan digunakan.
       required: true
-      example: "6281234567890"
+      example: "device_1"
       selector:
         text:
     group_id:
@@ -52,13 +52,13 @@ send_group:
 
 check_phone:
   name: Check Phone
-  description: Cek apakah nomor tersedia di WhatsApp menggunakan session sender.
+  description: Cek apakah nomor tersedia di WhatsApp.
   fields:
     sender:
-      name: Sender
-      description: Nomor pengirim untuk resolve session WAHA.
+      name: Session Name
+      description: Session name WAHA yang akan digunakan.
       required: true
-      example: "6281234567890"
+      example: "device_1"
       selector:
         text:
     phone:

@@ -26,28 +26,15 @@ class WahaApiClient:
             content_type = resp.headers.get("Content-Type", "")
             if "application/json" in content_type:
                 return await resp.json()
-            text = await resp.text()
-            return {"raw": text}
+            return await resp.text()
 
-    async def validate(self):
-        return await self._post_form("/api/waha/get-session/", {"phone": "test"})
-
-    async def get_session_name(self, sender: str) -> str:
-        result = await self._post_form("/api/waha/get-session/", {"phone": sender})
-        session_name = result.get("session_name")
-        if not session_name:
-            raise ValueError("session_name not found in get-session response")
-        return session_name
-
-    async def check_phone(self, phone: str, sender: str):
-        session_name = await self.get_session_name(sender)
+    async def check_phone(self, phone: str, session_name: str):
         return await self._post_form(
             f"/api/waha/{session_name}/check_phone",
             {"phone": phone},
         )
 
-    async def send_personal(self, phone: str, message: str, sender: str):
-        session_name = await self.get_session_name(sender)
+    async def send_personal(self, phone: str, message: str, session_name: str):
         return await self._post_form(
             f"/api/waha/{session_name}/send_message",
             {
@@ -58,8 +45,7 @@ class WahaApiClient:
             },
         )
 
-    async def send_group(self, group_id: str, message: str, sender: str):
-        session_name = await self.get_session_name(sender)
+    async def send_group(self, group_id: str, message: str, session_name: str):
         return await self._post_form(
             f"/api/waha/{session_name}/send_message",
             {
