@@ -1,0 +1,21 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "WAHA Notify",
+                "description": "Masukkan data Cloudflare Access dan session WAHA.",
+                "data": {
+                    "base_url": "WAHA Base URL",
+                    "cf_access_client_id": "CF key",
+                    "cf_access_client_secret": "CF secret",
+                    "session_name": "Session name"
+                }
+            }
+        },
+        "error": {
+            "auth": "authentication_failed",
+            "cannot_connect": "cannot_connect",
+            "unknown": "unknown"
+        }
+    }
+}

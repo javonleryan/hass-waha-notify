@@ -1,0 +1,10 @@
+{
+    "name": "Watzap Notify",
+    "country": [
+        "ID"
+    ],
+    "domains": [
+        "notify"
+    ],
+    "render_readme": true
+}

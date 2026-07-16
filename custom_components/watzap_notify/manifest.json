@@ -1,0 +1,16 @@
+{
+    "domain": "waha_notify",
+    "name": "WAHA Notify",
+    "documentation": "https://github.com/javonleryan/hass-waha-notify",
+    "issue_tracker": "https://github.com/javonleryan/hass-waha-notify/issues",
+    "codeowners": [
+        "@javonleryan"
+    ],
+    "config_flow": true,
+    "iot_class": "cloud_push",
+    "version": "1.0.0",
+    "dependencies": [],
+    "requirements": [
+        "aiohttp"
+    ]
+}
